@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import _get from "lodash/get";
 import {
   Chart,
@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import zoomPlugin from "chartjs-plugin-zoom";
+import LegendCustom from "./SubComponent/LegendCustom";
 
 Chart.register(
   CategoryScale,
@@ -25,7 +26,7 @@ Chart.register(
   ...registerables,
 );
 
-export const COLOR = {
+const COLOR = {
   colorValue: "#00B159",
   colorPredicted: "#00AEDB",
   colorDeviation: "#D11141",
@@ -35,8 +36,8 @@ export const COLOR = {
 };
 
 const ChartDisplay = ({ dataChart }) => {
-  const [mainChart, setMainChart] = useState();
-  const [subChart, setSubChart] = useState();
+  // const [mainChart, setMainChart] = useState();
+  // const [subChart, setSubChart] = useState();
   const chartRef1 = useRef();
   let myChart1;
   const chartRef2 = useRef();
@@ -204,29 +205,29 @@ const ChartDisplay = ({ dataChart }) => {
       },
     });
 
-    // custom lengend;
+    // custom legend;
     const btn0 = document.getElementById("btn0");
     const btn1 = document.getElementById("btn1");
-    const btn2 = document.getElementById("btn2");
+    const btnDeviation = document.getElementById("btn_deviation");
 
     const label0 = document.getElementById("label0");
     const label1 = document.getElementById("label1");
+    const labelDeviation = document.getElementById("label_deviation");
 
     // style
     if (btn0 && btn1) {
       btn0.style.backgroundColor = myChart1.data.datasets[0].backgroundColor;
       btn1.style.backgroundColor = myChart1.data.datasets[1].backgroundColor;
     }
-    btn2.style.backgroundColor = myChart2.data.datasets[0].backgroundColor;
+    btnDeviation.style.backgroundColor = myChart2.data.datasets[0].backgroundColor;
 
     // label
-
-    if ((label0, btn1)) {
+    if (label0 && btn1) {
       label0.innerText = myChart1.data.datasets[0].label;
       label1.innerText = myChart1.data.datasets[1].label;
     }
 
-    btn2.innerText = myChart2.data.datasets[0].label;
+    labelDeviation.innerText = myChart2.data.datasets[0].label;
 
     return () => {
       myChart1 && myChart1.destroy();
@@ -236,7 +237,8 @@ const ChartDisplay = ({ dataChart }) => {
 
   // toggle data
   const toggleData = val => () => {
-    if (val === 3) {
+    console.log("val", val);
+    if (val === "all") {
       // TODO: solution for No23
       const visibleLine1 = myChart1.isDatasetVisible(0);
       myChart1.data.datasets[0].hidden = visibleLine1;
@@ -245,7 +247,7 @@ const ChartDisplay = ({ dataChart }) => {
       return;
     }
 
-    if (val === 2) {
+    if (val === "diff") {
       const visibleLine2 = myChart2.isDatasetVisible(0);
       myChart2.data.datasets[0].hidden = visibleLine2;
       myChart2.update();
@@ -262,7 +264,8 @@ const ChartDisplay = ({ dataChart }) => {
     myChart1.update();
   };
 
-  const datasetChart1 = _get(myChart1, "data.datasets", []);
+  const datasetChart1 = useMemo(() => _get(myChart1, "data.datasets", []), [myChart1]);
+  console.log("datasetChart1", datasetChart1);
 
   return (
     <div
@@ -274,8 +277,7 @@ const ChartDisplay = ({ dataChart }) => {
         display: "flex",
         justifyContent: "space-between",
         // flexDirection: "column",
-      }}
-    >
+      }}>
       <div style={{ width: "100%", height: "100%", position: "absolute", margin: "0 50px" }}>
         <div style={{ width: 600 }}>
           <canvas id="myChart" ref={chartRef1} />
@@ -284,23 +286,29 @@ const ChartDisplay = ({ dataChart }) => {
           <canvas id="myChart2" ref={chartRef2} />
         </div>
         <div>
-          {Array.isArray(datasetChart1) &&
+          {/* {Array.isArray(datasetChart1) &&
             datasetChart1.map((el, index) => {
               return (
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div key={index} style={{ display: "flex", alignItems: "center" }}>
                   <button id={`btn${index}`} onClick={toggleData(index)}></button>
                   <span id={`label${index}`}></span>
                 </div>
               );
-            })}
+            })} */}
 
-          <button id="btn2" onClick={toggleData(2)}>
-            Label3
-          </button>
+          <LegendCustom idBtn="btn0" idLabel="label0" handleClick={toggleData(0)} />
+          <LegendCustom idBtn="btn1" idLabel="label1" handleClick={toggleData(0)} />
+          <LegendCustom
+            idBtn="btn_deviation"
+            idLabel="label_deviation"
+            handleClick={toggleData("diff")}
+          />
 
-          <button id="btn3" onClick={toggleData(3)}>
-            Show/hide line chart 1
-          </button>
+          <div>
+            <button id="btn3" onClick={toggleData("all")}>
+              Show/hide line chart 1
+            </button>
+          </div>
         </div>
       </div>
     </div>

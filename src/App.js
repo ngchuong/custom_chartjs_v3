@@ -1,6 +1,4 @@
-import React, { Component, createRef, useEffect, useRef, useState } from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
-import { Chart } from "chart.js";
+import React, { useEffect, useState } from "react";
 import { reqSensor } from "./api";
 
 import ChartDisplay from "./chart";
@@ -8,12 +6,15 @@ import ChartDisplay from "./chart";
 function App() {
   const [dataChart, setDataChart] = useState([]);
   const [time, setTime] = useState({ sTime: 1, eTime: 8 });
+  // const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // request api
+    // setIsLoading(true);
     reqSensor(time).then(res => {
       setDataChart(res);
     });
+    // setIsLoading(false);
   }, [time]);
 
   const onChangeTimeReq = type => {
@@ -44,6 +45,11 @@ function App() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <button onClick={() => onChangeTimeReq("next")}>Next</button>
       </div>
+      {/* {isLoading && (
+        <div style={{ display: "fixed", width: "100vw", height: "100vh", background: "#fff" }}>
+          Loading...
+        </div>
+      )} */}
     </div>
   );
 }
