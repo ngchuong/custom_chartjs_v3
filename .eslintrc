@@ -11,17 +11,33 @@
     "react",
     "react-hooks"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2018
   },
   "rules": {
-    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": true }],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none",
+        "ignoreRestSiblings": true
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "import/no-anonymous-default-export": "off",
     // "no-prototype-builtins": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    }
   }
 }
