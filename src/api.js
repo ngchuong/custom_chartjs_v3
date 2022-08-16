@@ -4,8 +4,8 @@ const mockData = (start, end) => {
   for (let i = start; i <= end; i++) {
     data.push({
       label: `${i}/01`,
-      max: Math.floor(Math.random() * 100),
-      min: Math.floor(Math.random() * 100),
+      max: Math.floor(Math.random() * 90),
+      min: Math.floor(Math.random() * 90),
     });
   }
 

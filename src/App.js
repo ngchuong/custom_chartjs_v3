@@ -5,7 +5,7 @@ import ChartDisplay from "./chart";
 
 function App() {
   const [dataChart, setDataChart] = useState([]);
-  const [time, setTime] = useState({ sTime: 1, eTime: 8 });
+  const [time, setTime] = useState({ sTime: 1, eTime: 16 });
   // const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -16,6 +16,12 @@ function App() {
     });
     // setIsLoading(false);
   }, [time]);
+
+  const onZoom = timeRange => {
+    reqSensor(timeRange).then(res => {
+      setDataChart(res);
+    });
+  };
 
   const onChangeTimeReq = type => {
     const thin = 7;
@@ -41,7 +47,7 @@ function App() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <button onClick={() => onChangeTimeReq("prev")}>Prev</button>
       </div>
-      <ChartDisplay dataChart={dataChart} />
+      <ChartDisplay dataChart={dataChart} handleZoom={onZoom} />
       <div style={{ display: "flex", alignItems: "center" }}>
         <button onClick={() => onChangeTimeReq("next")}>Next</button>
       </div>

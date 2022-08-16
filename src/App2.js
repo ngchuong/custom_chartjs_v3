@@ -116,7 +116,6 @@ function App() {
   const toggle = val => {
     const chart = chartRef.current.config._config;
     const visible = chartRef.current.isDatasetVisible(val);
-    console.log("chart", chart, chartRef, visible);
 
     if (visible) {
       chart.data.datasets[val].hidden = true;
