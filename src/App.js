@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { reqSensor } from "./api";
 
-import ChartDisplay from "./chart";
+// import ChartDisplay from "./chart";
+import ChartDisplay from "./HideChart";
 
 function App() {
   const [dataChart, setDataChart] = useState([]);
