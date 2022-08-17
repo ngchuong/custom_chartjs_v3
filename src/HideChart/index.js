@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import _get from "lodash/get";
+import { htmlLegendPlugin } from "../config/config";
 
 Chart.register(
   CategoryScale,
@@ -43,14 +44,17 @@ const ChartDisplay = ({ dataChart }) => {
 
   // toggle
   const toggleData = value => {
-    arrRef.forEach((item, index) => {
+    arrRef.forEach(item => {
       const datasets = _get(item, "current.config._config.data.datasets", []);
+      const chart = item.current;
 
-      datasets.forEach(el => {
+      datasets.forEach((el, i) => {
         if (value == "measured") {
-          el.hidden = el.yAxisID === "yyy" ? true : false;
+          const isVisible = el.xxx === "diff" ? false : true;
+          chart.setDatasetVisibility(i, isVisible);
         } else {
-          el.hidden = el.yAxisID === "yyy" ? false : true;
+          const isVisible = el.xxx === "diff" ? true : false;
+          chart.setDatasetVisibility(i, isVisible);
         }
       });
     });
@@ -112,12 +116,22 @@ const ChartDisplay = ({ dataChart }) => {
                       fill: false,
                       borderColor: "red",
                       backgroundColor: "red",
-                      yAxisID: "yyy",
+                      // yAxisID: "yyy",
+                      xxx: "diff",
                     },
                   ],
                 }}
-                options={{}}
+                options={{
+                  plugins: {
+                    // htmlLegend: {
+                    //   // ID of the container to put the legend in
+                    //   containerID: `legend-container-${index}`,
+                    // },
+                  },
+                }}
+                // plugins={[htmlLegendPlugin]}
               />
+              {/* <div id={`legend-container-${index}`}></div> */}
             </div>
           );
         })}
