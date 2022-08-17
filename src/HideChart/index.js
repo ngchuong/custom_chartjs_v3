@@ -1,4 +1,4 @@
-import React, { useRef, useState, createRef, useMemo } from "react";
+import React, { useRef, useState, createRef, useMemo, useEffect, useCallback } from "react";
 import {
   Chart,
   registerables,
@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import _get from "lodash/get";
 
 Chart.register(
   CategoryScale,
@@ -43,22 +44,15 @@ const ChartDisplay = ({ dataChart }) => {
   // toggle
   const toggleData = value => {
     arrRef.forEach((item, index) => {
-      // console.log("item", value, item);
-      const chartRef = item.current.config._config;
-      if (value == "measured") {
-        console.log(1);
-        chartRef.data.datasets[0].hidden = false;
-        chartRef.data.datasets[1].hidden = false;
-        chartRef.data.datasets[2].hidden = true;
-      } else {
-        console.log(2);
+      const datasets = _get(item, "current.config._config.data.datasets", []);
 
-        chartRef.data.datasets[0].hidden = true;
-        chartRef.data.datasets[1].hidden = true;
-        chartRef.data.datasets[2].hidden = false;
-      }
-
-      item.current.update();
+      datasets.forEach(el => {
+        if (value == "measured") {
+          el.hidden = el.yAxisID === "yyy" ? true : false;
+        } else {
+          el.hidden = el.yAxisID === "yyy" ? false : true;
+        }
+      });
     });
   };
 
@@ -118,6 +112,7 @@ const ChartDisplay = ({ dataChart }) => {
                       fill: false,
                       borderColor: "red",
                       backgroundColor: "red",
+                      yAxisID: "yyy",
                     },
                   ],
                 }}
