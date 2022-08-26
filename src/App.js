@@ -1,65 +1,89 @@
-import React, { useEffect, useState } from "react";
-import { reqSensor } from "./api";
+import React, { useMemo } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import SplitPane from "react-split-pane";
 
-// import ChartDisplay from "./chart";
-// import ChartDisplay from "./HideChart";
-import ChartDisplay from "./DrawVerticalChart";
+import Home from "./components/Home";
+import DrawVerticalChart from "./components/DrawVerticalChart";
+import OverlayMultipleChart from "./components/OverlayMultipleChart";
+import SynchronizedTwoChart from "./components/SynchronizedTwoChart";
+import ControlLegendOfMultipleChart from "./components/ControlLegendOfMultipleChart";
 
-function App() {
-  const [dataChart, setDataChart] = useState([]);
-  const [time, setTime] = useState({ sTime: 1, eTime: 16 });
-  // const [isLoading, setIsLoading] = useState(false);
+const styles = {
+  background: "#000",
+  width: "2px",
+  cursor: "col-resize",
+  margin: "0 5px",
+  height: "100%",
+};
 
-  useEffect(() => {
-    // request api
-    // setIsLoading(true);
-    reqSensor(time).then(res => {
-      setDataChart(res);
-    });
-    // setIsLoading(false);
-  }, [time]);
+const rootRoutes = [
+  {
+    path: "/",
+    title: "Introduce",
+    component: <Home />,
+  },
+  {
+    path: "/draw-vertical-chart",
+    title: "Draw vertical chart",
+    component: <DrawVerticalChart />,
+  },
+  {
+    path: "/overlay-multiple-chart",
+    title: "Overlay Multiple Chart",
+    component: <OverlayMultipleChart />,
+  },
+  {
+    path: "/synchronized-two-chart",
+    title: "Synchronized Two Chart",
+    component: <SynchronizedTwoChart />,
+  },
+  {
+    path: "/control-legend-of-multiple-chart",
+    title: "Control Legend Of Multiple Chart",
+    component: <ControlLegendOfMultipleChart />,
+  },
+];
 
-  const onZoom = timeRange => {
-    reqSensor(timeRange).then(res => {
-      setDataChart(res);
-    });
-  };
-
-  const onChangeTimeReq = type => {
-    const thin = 7;
-    if (type === "next") {
-      setTime(cur => {
-        return {
-          sTime: cur.sTime + thin,
-          eTime: cur.eTime + thin,
-        };
-      });
-    } else {
-      setTime(cur => {
-        return {
-          sTime: cur.sTime - thin,
-          eTime: cur.eTime - thin,
-        };
-      });
-    }
-  };
-
+const App = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <button onClick={() => onChangeTimeReq("prev")}>Prev</button>
-      </div>
-      <ChartDisplay dataChart={dataChart} handleZoom={onZoom} />
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <button onClick={() => onChangeTimeReq("next")}>Next</button>
-      </div>
-      {/* {isLoading && (
-        <div style={{ display: "fixed", width: "100vw", height: "100vh", background: "#fff" }}>
-          Loading...
+    <BrowserRouter>
+      <SplitPane split="vertical" minSize={100} defaultSize={200} resizerStyle={styles}>
+        <menu
+          style={{
+            backgroundColor: "#293462",
+            height: "100%",
+            fontSize: 16,
+            padding: "2px 0 0 5px",
+          }}>
+          {rootRoutes.map(el => {
+            return (
+              <div
+                key={el.title}
+                style={{
+                  margin: "8px 0px",
+                  padding: "8px 0",
+                  width: "100%",
+                  backgroundColor: `${
+                    window.location.pathname === el.path ? "#5800FF" : "#3B9AE1"
+                  }`,
+                }}>
+                <Link to={el.path} style={{ color: "#fff", textDecoration: "none", padding: 4 }}>
+                  {el.title}
+                </Link>
+              </div>
+            );
+          })}
+        </menu>
+        <div>
+          <Routes>
+            {rootRoutes.map(el => {
+              return <Route key={el.title} exact path={el.path} element={el.component} />;
+            })}
+          </Routes>
         </div>
-      )} */}
-    </div>
+      </SplitPane>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

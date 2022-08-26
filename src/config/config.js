@@ -139,7 +139,6 @@ export const htmlLegendPlugin = {
 
     // Reuse the built-in legendItems generator
     const items = chart.options.plugins.legend.labels.generateLabels(chart);
-    console.log("items", items, chart);
     items.forEach(item => {
       const li = document.createElement("li");
       li.style.alignItems = "center";
