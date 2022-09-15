@@ -1,0 +1,12 @@
+1. Phan biet let var
+2. So sanh promise, async await
+3. Serverside render và client render
+4. event loop hoạt động như nào? (chạy ở bên dưới)
+5. useEffect mà k có dependencies là gì?
+// Similar to componentDidMount and componentDidUpdate:
+
+6. Ưu nhược điểm của micro service
+
+7. Trong react em thích và k thích cái gì nhất
+8. Tại sao khi map lại phải có key
+9. Phân biệt null và undefined
