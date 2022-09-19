@@ -1,0 +1,217 @@
+20/10/15 -----------------------------
+
+1. SSH: là một giao thức điều khiển từ xa cho phép người dùng kiểm soát và chỉnh sửa server từ xa qua Internet || syntax: ssh {user}@{host}
+2. Phân biệt:
+	- Miss: phụ nữ còn độc thân
+	- Mrs: phụ nữ đã kết hôn
+	- Mr : đàn ông đã có vợ/ độc thân
+	- Ms: phụ nữ không muốn công khai tình trạng hôn nhân
+3. Docker image, docker container
+	- Docker image: là file bất biến, không đổi, chứa source, library, dependencies, tool, ...
+	- Docker container: là một run-time environment mà ở đó người dùng có thể chạy một ứng dụng độc lập. Container phụ thuộc và sử dụng image để chạy run-time enviroment
+4. Tạo repo docker
+5. DevDependencies (trong package.json)
+	Chỉ sử dụng cho môi trường dev, khi deploy trên product thì k cần đến nó nữa
+	
+20/10/16 -----------------------------
+
+1. Thuế thu nhập cá nhân Việt nam và các nước
+2. Thuế đánh vào tầng lớp thu nhập trung bình, tầng lớp trên thì trốn thuế, lách luật
+
+20/10/19 ----------------------------
+
+1. File .md : là ngôn ngữ đánh dấu với cú pháp văn bản thô, có thể dễ dàng chuyển sang html và nhiều định dạng khác
+2. Tri thức, trí thức
+	- Tri thức là kiến thức về sự vật, hiện tượng 
+	- Trí thức: Là người sử dụng tri thức để áp dụng vào công việc
+3. Ngoại suy, nội suy
+	Có biên [a, b], giá trị trong khoảng a-b thì gọi là nội suy, bên ngoài khoảng a-b gọi là ngoại suy
+4. Học được cách viết file bat cơ bản
+5. Tìm hiều về adobe XD
+6. Promise
+	- Phương thức .then() nhận vào 1 hàm, nếu nhận vào 1 giá trị sẽ bị bỏ qua
+	Cách giải quyết:
+	
+	Promise.resolve(1)
+		.then(()=> 2)
+		.then(console.log)
+	
+	- Phân biệt .then(resolve, reject) và .then(resolve).catch(reject)
+		Hàm reject trong .then(resolve, reject) chỉ có thể chụp được lỗi từ những .then() phía trước nó, mà không thể bắt được lỗi xảy ra trong hàm resolve cùng cấp.
+
+20/10/20 ------------------------------
+
+- táo organic, táo hữu cơ
+- kì lân, phượng hoàng, heo
+
+20/10/21 ------------------------------
+
+	- Để ý khi truyền function  trong react (hoặc là return về 1 giá trị hoặc là return về 1 function)
+	
+20/10/22 -----------------------------
+	Luật lao động:
+		Nam 60 tuổi nghỉ hưu / đóng BHXH 35 năm thì dược 75% lương hưu
+		Nữ 55 tuổi nghỉ hưu / đóng BHXH 30 năm thì được 75% lương hưu
+		
+		BHXH tự nguyện (có thể tự mua): cho 2 mục đích: hưu trí và tử tuất
+		
+		Khi người lao động chết - Doanh nghiệp phải trả 30 tháng tiền lương
+													- Nhà nước trả thêm
+	Dân tộc:
+		Trung Quốc: duy lí
+		Việt Nam: duy tình
+		Châu Âu: duy tâm
+		
+20/10/23 -----------------------------
+
+	- Mô hình WaterFall:  RequirementAnalysis -> DeSign -> CodeDing -> TestTing -> Implement -> Operation and maintain
+		+ Ưu điểm : Dễ tiếp cận, sử dụng, các giai đoạn được xác định rõ, áp dụng cho dự án ít bị thay đổi requirement
+		+ Nhược: khó quay lại giai đoạn trước, quay lại càng nhiều bước thì cost càng nhiều
+		
+	- V-Shaped : tương tự WaterFalll nhưng sau mỗi phased lại có thêm 1 bước test
+		+ Ưu điểm: Đơn giản, dễ sử dụng, thực hiện được verification và validation sớm trong mỗi giai đoạn
+		+ Nhược điểm: Phạm vi điều chỉnh khá là khó khăn và tốn kém
+	- Agile: Là 1 vòng lặp được thực hiện nhiều lần   (Planing -> Dev -> Test -> Demo ) -> Deployment =>  (Planing -> Dev -> Test -> Demo ) -> Deployment
+		+ Mô tả: Làm các bản demo cho khách hàng xem -> từ đó khách hàng sẽ nhận xét và đưa ra các yêu cầu thêm chỉnh sửa
+		+ Ưu điểm: Giảm thời gian để tận dụng 1 số tính năng của hệ thống, phần mềm chất lượng với thời gian là thấp nhất với sự hài lòng của khách hàng,  
+		+ Nhược điểm: Phụ thuộc nhiều vào technical, cần team có special skill, tài liệu được làm sau
+		
+	- Linkedin: mạng xã hội tìm việc làm
+	
+20/10/26 ------------------------------
+	- Validate regex kí tự đặc biệt   const regex = /[?%/\\|<>"']/g;
+	- Thả thính: Em độc thân. Anh độc thân. Chắc không phải là ngẫu nhiên đâu nhỉ?
+							 Cậu không phải kiểu người mà tớ thích. Nhưng cậu là người tớ thích.
+
+20/10/27 ------------------------------
+	- Meeting: thời gian ngắn thì không cần làm slide
+	- cc trong mail: (carbon copy)
+	- Kĩ năng đàm phán khi gặp người hỏi đi hỏi lại 1 vấn đề. Những vấn đề quan trọng gửi mail cho khách hàng và cc cho sếp của người khách hàng đó.
+	- Khi communication: Nên confirm lại những vấn đề chưa rõ xem mình có hiểu đúng k.
+	- BrSE: communication phải giỏi, điềm tĩnh, lắng nghe.
+		+ Với khách Nhật: nói vòng vo trước, câu chốt mới là vấn đề
+		+ Với khách Mỹ: Nói vấn đề trước, xong mới giải thích
+	- Yêu cầu tối thiểu cho BrSE là tiếng Nhật N2, code giỏi
+	- Đừng khoe là bạn OT để hoàn thành công việc, điều đó chỉ chứng tỏ năng lực làm việc yếu kém và khả năng lên kế hoạch tệ hại của bạn 
+	- Nếu 10 năm nữa em chưa lấy chồng, anh chưa lấy vợ, vậy thì chúng ta thật thảm quá, thảm quá đi :D
+	- Con tàu sẽ rất an toàn khi neo đậu trong bến cảng. Nhưng người ta đóng tàu không phải vì mục đích đó.
+	- Cuộc đời là một vòng lẩn quẩn:
+		Sinh ra 2 tuổi ĐÁI BÔ
+		20 tuổi có BỒ
+		30 tuổi là BỐ
+		40 tuổi lại có BỒ
+		…
+		80 tuổi lại ĐÁI BÔ.
+		// link mua 3lo
+		https://zongvietnam.com/cua-hang/ba-lo-tui-xach/ba-lo-thong-minh/balo-laptop-the-thao-chong-nuoc-mau-den-full-moyyi-b2/?utm_source=Google%20Shopping&utm_campaign=googleshopping&utm_medium=cpc&utm_term=14861&gclid=EAIaIQobChMI85SokM3U7AIVRqWWCh1tEgXeEAYYBCABEgKS1PD_BwE
+		
+		---- EJS ---
+		- Là template Engine, 
+		Thông qua server express() sẽ parse các file ejs thành html, từ đó render ra, các file js sẽ đọc từ đó
+
+20/10/28 -------------------------------------
+	- RAM (random access memory)
+	- ROM (read only memory)
+	- FPS (first person shooter)
+	- Code clean: hạn chế dùng else trong if/else
+	- SSO (single sign-on): là một sơ đồ xác thực cho phép người dùng đăng nhập bằng một ID và mật khẩu duy nhất vào bất kỳ hệ thống phần mềm nào có liên quan nhưng độc lập.
+	- CC (crowd control): khống chế
+
+20/10/29 -------------------------------------
+	K(kara) trong kim cương là độ tinh khiết của nó, 1 kara  = 1/24 độ tinh khiết
+20/10/30 ------------------------------------
+20/11/3 -------------------------------------
+	- Lõi Trái Đất nóng thì sao ?  TĐ nóng thì tạo ra từ trường và khiến nó xoay
+	- Khi chơi thể thao thì cơ thể sản sinh ra hooc-mon Endorphine(chất gây nghiện tự thân thể tiết ra): có tác dụng giảm đau, giảm stress
+	- Yến tước an tri hồng hộc chi chí tai: Người tầm thường sao hiểu đc chí hướng của người mang hùng tâm tráng chí
+	
+	 Chúc em rồi sẽ có một ngày đủ mạnh mẽ để không cần ai bảo vệ, không còn phải nức nở bật khóc. 
+	 Chúc em học được cách mỉm cười, dịu dàng đối xử với thế gian.
+	 Chúc em coi nhẹ thiệt hơn được mất, không phải mãi dây dưa vương vấn.
+	 Chúc em học được cách dũng cảm, chẳng còn phải ngần ngại e dè.
+	 Chúc em cuối cùng rồi sẽ giương cánh bay cao, không còn sầu muộn. 
+	 Chúc em quãng đời còn lại dẫu có cô độc cũng sẽ luôn yên ổn tươi vui.
+	 
+	 Vì anh không biết kiếp sau còn có thể gặp em không, nên kiếp này mới cố gắng đến vậy để trao em những gì tốt nhất.
+20/11/5 ------------------------------------
+	- Trong jquery thì sau click thì phải off || sau on thì phải off (Nó có thể gây ra hiện tượng memory leak)
+20/11/06 ------------------------------------
+	- Xử lí thì nên dùng array.map() thay cho for(i)
+20/11/09 -----------------------------------
+	- Tiên quyền, hậu thối, thứ cầm nã, binh khí, nội gia, ngũ hợp nhất
+	- Check path component trong [flxp_dev\flxp\flxp\flpw_parts\routes\]
+	- Thêm dấu nháy(') vào đầu tiên trong cell của excel để biểu thị string
+20/11/12 ------------------------------------
+	anything else: còn gì nữa không
+	whenever: bất cứ khi nào
+	
+20/11/18 -------------------------------------
+
+	- Lỗi 500 external: --fix: sử dụng locals.[variable] insteads of [variable] trong ejs
+	- Trạng từ:  là những từ bổ nghĩa cho tính từ và động từ, để miêu tả mức độ và trạng thái của tính từ và động từ.
+20/11/19 ------------------------------------
+	- Phân biệt cookie và session:
+		+ Cookie: được lưu trên browser và phía client, có sẵn trong trình duyệt dến khi expired
+		+ Session: k được lưu trên browser, lưu ở phía server, đóng browser sẽ mất session
+
+20/11/23 -------------------------------------
+	- useMemo: Tránh tính toán nặng, khi sử dụng useMemo thì k cần dùng đến dấu gọi hàm, ví dụ: getState thay vì getState() bởi vì useMemo đã thực thi hàm mà ta đã pass, ta chỉ nhận ra kết quả(1 memoized value).
+	- useCallback: Tránh re-render ở component con, khi component parent re-render, dù cho component có sử dụng React.memo nó vẫn bị re-render. Khi sử dụng useCallback thì các func của cha sẽ k re-render(trừ khi dependencies thay đổi )=> object không re-render => component k re-render.
+	
+	- Gươm đao là tấm gương phản chiếu nhân cách. là "nhân sinh đạo" của con người
+	- cái đúng, sai của bạn khác với cái đúng sai của nhân loại
+20/11/24 -------------------------------------
+	- Nên list Q&A để tiện liên hệ và xem lại
+20/11/30 -------------------------------------
+	- Notes lại những phần chưa rõ, chưa xong để confirm lại với khách hàng
+20/12/1 --------------------------------------
+	- Nội hàm: Nội hàm là tập hợp tất cả các thuộc tính chung của các đối tượng được phản ánh trong một khái niệm.
+21/1/22 --------------------------------------
+		Bỏ cả giang sơn vì mĩ nữ, ai ngờ mĩ nữ lại thích giang sơn
+		Ăn nhanh, đi chậm, hay cười, hôn trộm, đái bậy là người việt nam
+21/1/27 --------------------------------------
+	chưa đi chưa biết sài gòn, đi rồi mới biết không còn 1 xu, về nhà mới biết mình ngu, thằng mồm ăn ist thằng ku ăn nhiều
+	- gái gặp hơi trai như thài lài gặp cứt chó
+21/2/19 --------------------------------------
+	- Ngàn năm thương nhớ lòng mong mỏi, thà phụ trời xanh chẳng phụ nàng
+	- Chàng nhớ thiếp muôn vàn đau khổ, Thiếp nhớ chàng khốn khổ xiết bao
+	- Bằng hữu là nghĩa tương tri, có duyên gặp mặt mấy khi trong đời
+	- Da trắng, chân dài, mặt nét, hàng căng đét
+	- save the best for last
+
+1/3/21 -----------------------------------------
+	- command shutdown computer with cmd: shutdown -s -t 3600  (unit second)
+	- Cancel command timer: shutdown -a
+	- Rename all file of folder: rename *.* ???????-original.*. 
+		+ “rename” là lệnh chính bất biến, yêu cầu máy tính phải thay đổi tên file.
+		+ *.* nghĩa là “toàn bộ file trong folder được chọn”. Bạn có thể gõ thêm ký tự như “IMG*.*” để giới hạn những file hình ảnh IMG, hoặc “*.jpg” để chọn những file JPEG.
+		+ “???????” là lệnh yêu cầu giữ nguyên 7 ký tự đầu tiên của file gốc - tương đương với 7 dấu “?”. Bạn có thể tùy chỉnh số lượng này.
+		+ “-original” là cụm từ mà bạn muốn thêm vào tên của các file và có thể thay đổi tùy ý.
+9/3/21 ------------------------------------------
+	+ can: diễn tả khả năng của 1 người có thể làm được gì,1 sự việc có thể xảy ra ở hiện tại hoặc tương lai
+	+ could: như "can" nhưng ở quá khứ, dùng để xin phép
+	+ may: diễn tả điều gì có thể xảy ra ở hiện tại, đưa ra sự xin phép
+	+ might: như "may" nhưng ở quá khứ
+
+	+ will(sẽ): diễn đạt, dự đoán sự việc xảy ra ở tương lai
+	+ would: diễn tả 1 giả định xảy ra hoặc dự đoán sự việc có thể xảy ra trong quá khứ, thường dùng trong câu nghi vấn
+
+	+ must(phải): diễn tả sự cần thiết, bắt buộc phải xảy ra ở hiện tại hoặc tương lai
+	+ should (nên): cũng có nghĩa như "must" nhưng nhẹ hơn mưst
+17/3/21 -------------------------------------------
+	+ cuộc đời anh khó lắm để thấy em xấu
+	- người nói vô tình, người nghe hữu ý
+5/4/21 ---------------------------
+	Làm từ không đến có,
+	chơi từ dễ đến khó
+27/4/21 -------------
+	đừng cầu nguyện cho một cuộc sống dễ dàng, hay cầu nguyện sức mạnh để chịu đựng những khó khăn
+7/6/21 ---------------
+ sitemap ---> generate breadcum
+20/06/22---------------
+Be cool: hãy bình tĩnh
+wait for a while: đợi một lúc
+strategy : chiến lược
+
+22/08/22---------------
+Thông thường, Client thì hiển thị time theo local, request thì dùng time UTC
