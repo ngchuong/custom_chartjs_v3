@@ -1,0 +1,1 @@
+start cmd /c 7z a -tzip v0r0.zip -r . -x!*.bat -x!*.zip
